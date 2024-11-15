@@ -1,6 +1,14 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import type { LinksFunction } from "react-router";
+import {
+  Link,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+} from "react-router";
 
+import { Fragment } from "react/jsx-runtime";
 import "./app.css";
 
 export const links: LinksFunction = () => [
@@ -35,5 +43,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <Fragment>
+      <div className="flex gap-2 border-b px-4 py-2">
+        <Link to=".">Home</Link>
+        <Link to="about">About</Link>
+      </div>
+      <div className="p-4">
+        <Outlet />
+      </div>
+    </Fragment>
+  );
 }
